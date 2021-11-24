@@ -11,6 +11,7 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
+import javax.swing.JRadioButton;
 
 public class JFLogin extends JFrame {
 
@@ -77,22 +78,22 @@ public class JFLogin extends JFrame {
 		
 		JButton btnNewButton = new JButton("Acessar");
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnNewButton.setBounds(10, 183, 115, 25);
+		btnNewButton.setBounds(67, 182, 142, 27);
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Cancelar");
 		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnNewButton_1.setBounds(152, 183, 120, 26);
+		btnNewButton_1.setBounds(275, 222, 133, 26);
 		contentPane.add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Recuperar senha");
 		btnNewButton_2.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnNewButton_2.setBounds(127, 220, 172, 30);
+		btnNewButton_2.setBounds(252, 182, 172, 27);
 		contentPane.add(btnNewButton_2);
 		
 		JButton btnNewButton_3 = new JButton("Cadastrar-se");
 		btnNewButton_3.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnNewButton_3.setBounds(303, 183, 121, 26);
+		btnNewButton_3.setBounds(67, 222, 142, 26);
 		contentPane.add(btnNewButton_3);
 	}
 }
