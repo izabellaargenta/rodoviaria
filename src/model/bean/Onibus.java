@@ -14,8 +14,8 @@ public class Onibus {
 	public int getIdOnibus() {
 		return idOnibus;
 	}
-	public void setIdOnibus(String string) {
-		this.idOnibus = string;
+	public void setIdOnibus(int i) {
+		this.idOnibus = i;
 	}
 	public int getHorario_s() {
 		return horario_s;

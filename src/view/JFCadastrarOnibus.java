@@ -107,23 +107,7 @@ public class JFCadastrarOnibus extends JFrame {
 		spnC.setBounds(321, 119, 103, 20);
 		contentPane.add(spnC);
 		
-		JLabel txtTipo = new JLabel("Tipo \u00D4nibus:");
-		txtTipo.setFont(new Font("Tahoma", Font.BOLD, 13));
-		txtTipo.setBounds(10, 165, 119, 21);
-		contentPane.add(txtTipo);
-		
-		final JRadioButton rdbConvencional = new JRadioButton("Convencional");
-		rdbConvencional.setBounds(102, 165, 109, 23);
-		contentPane.add(rdbConvencional);
-		
-		final JRadioButton rdbExecutivo = new JRadioButton("Executivo");
-		rdbExecutivo.setBounds(207, 165, 125, 23);
-		contentPane.add(rdbExecutivo);
-		
-		ButtonGroup Tipo_onibus = new ButtonGroup();
-		Tipo_onibus.add(rdbConvencional);
-		Tipo_onibus.add(rdbExecutivo);
-		
+	
 		
 		JButton btnCadastrar = new JButton("Cadastrar");
 		btnCadastrar.addActionListener(new ActionListener() {
@@ -135,6 +119,8 @@ public class JFCadastrarOnibus extends JFrame {
 				o.setIdOnibus(txtIdOnibus.getText());
 				o.setOrigem(txtOrigem.getText());
 				o.setDestino(txtDestino.getText());
+				o.setHorario_c(Integer.parseInt(spnC.getValue().toString()));
+				o.setHorario_s(Integer.parseInt(spnS.getValue().toString()));
 				
 				dao.create(o);
 				
