@@ -1,6 +1,5 @@
 package view;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -23,9 +22,11 @@ import java.awt.event.ActionEvent;
 public class JFCadastrarOnibus extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField txtIdOnibus;
+	private JTextField txtPrefixo;
 	private JTextField txtOrigem;
 	private JTextField txtDestino;
+	private JTextField txtS;
+	private JTextField txtC;
 
 	/**
 	 * Launch the application.
@@ -59,15 +60,15 @@ public class JFCadastrarOnibus extends JFrame {
 		lblNewLabel.setBounds(10, 11, 383, 21);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblId = new JLabel("Identifica\u00E7\u00E3o do \u00D4nibus:");
+		JLabel lblId = new JLabel("Identificação do Ônibus:");
 		lblId.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblId.setBounds(10, 43, 192, 32);
 		contentPane.add(lblId);
 		
-		txtIdOnibus = new JTextField();
-		txtIdOnibus.setBounds(201, 50, 223, 21);
-		contentPane.add(txtIdOnibus);
-		txtIdOnibus.setColumns(10);
+		txtPrefixo = new JTextField();
+		txtPrefixo.setBounds(201, 50, 223, 21);
+		contentPane.add(txtPrefixo);
+		txtPrefixo.setColumns(10);
 		
 		JLabel lblOrigem = new JLabel("Origem");
 		lblOrigem.setFont(new Font("Tahoma", Font.BOLD, 13));
@@ -79,14 +80,10 @@ public class JFCadastrarOnibus extends JFrame {
 		contentPane.add(txtOrigem);
 		txtOrigem.setColumns(10);
 		
-		JLabel lblHorarioSaida = new JLabel("Hor\u00E1rio Sa\u00EDda");
+		JLabel lblHorarioSaida = new JLabel("Horário Saída");
 		lblHorarioSaida.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblHorarioSaida.setBounds(10, 118, 93, 21);
 		contentPane.add(lblHorarioSaida);
-		
-		final JSpinner spnS = new JSpinner();
-		spnS.setBounds(102, 119, 89, 20);
-		contentPane.add(spnS);
 		
 		JLabel lblDestino = new JLabel("Destino:");
 		lblDestino.setFont(new Font("Tahoma", Font.BOLD, 13));
@@ -98,17 +95,13 @@ public class JFCadastrarOnibus extends JFrame {
 		contentPane.add(txtDestino);
 		txtDestino.setColumns(10);
 		
-		JLabel lblHorarioChegada = new JLabel("Hor\u00E1rio Chegada:");
+		JLabel lblHorarioChegada = new JLabel("Horário Chegada:");
 		lblHorarioChegada.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblHorarioChegada.setBounds(201, 118, 119, 21);
 		contentPane.add(lblHorarioChegada);
 		
-		final JSpinner spnC = new JSpinner();
-		spnC.setBounds(321, 119, 103, 20);
-		contentPane.add(spnC);
-		
 	
-		
+	
 		JButton btnCadastrar = new JButton("Cadastrar");
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -116,19 +109,16 @@ public class JFCadastrarOnibus extends JFrame {
 				Onibus o = new Onibus();
 				OnibusDAO dao = new OnibusDAO();
 				
-				o.setIdOnibus(txtIdOnibus.getText());
+				o.setPrefixo(Integer.parseInt(txtPrefixo.getText()));
 				o.setOrigem(txtOrigem.getText());
 				o.setDestino(txtDestino.getText());
-				o.setHorario_c(Integer.parseInt(spnC.getValue().toString()));
-				o.setHorario_s(Integer.parseInt(spnS.getValue().toString()));
-				
+				o.setHorario_c(txtC.getText());
+				o.setHorario_s(txtS.getText());
 				dao.create(o);
-				
-				
-				
+				dispose();
 			}
-			
 		});
+	
 		btnCadastrar.setFont(new Font("Trebuchet MS", Font.BOLD, 13));
 		btnCadastrar.setBounds(10, 217, 119, 22);
 		contentPane.add(btnCadastrar);
@@ -142,5 +132,15 @@ public class JFCadastrarOnibus extends JFrame {
 		btnCancelar.setFont(new Font("Trebuchet MS", Font.BOLD, 13));
 		btnCancelar.setBounds(307, 217, 117, 23);
 		contentPane.add(btnCancelar);
+		
+		txtS = new JTextField();
+		txtS.setBounds(102, 119, 86, 20);
+		contentPane.add(txtS);
+		txtS.setColumns(10);
+		
+		txtC = new JTextField();
+		txtC.setBounds(318, 119, 86, 20);
+		contentPane.add(txtC);
+		txtC.setColumns(10);
 	}
 }

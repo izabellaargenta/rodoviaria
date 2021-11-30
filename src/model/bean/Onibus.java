@@ -2,25 +2,26 @@ package model.bean;
 
 public class Onibus {
 	
-	private String idOnibus;
-	private int horario_s;
+	private int idOnibus;
+	private String horario_s;
 	private String origem;
-	private int horario_c;
+	private String horario_c;
 	private String destino;
-	private String tipo_onibus;
+	private int prefixo;
+	
 	
 	
 	
 	public int getIdOnibus() {
 		return idOnibus;
 	}
-	public void setIdOnibus(int i) {
-		this.idOnibus = i;
+	public void setIdOnibus(int idOnibus) {
+		this.idOnibus = idOnibus;
 	}
-	public int getHorario_s() {
+	public String getHorario_s() {
 		return horario_s;
 	}
-	public void setHorario_s(int horario_s) {
+	public void setHorario_s(String horario_s) {
 		this.horario_s = horario_s;
 	}
 	public String getOrigem() {
@@ -29,10 +30,10 @@ public class Onibus {
 	public void setOrigem(String origem) {
 		this.origem = origem;
 	}
-	public int getHorario_c() {
+	public String getHorario_c() {
 		return horario_c;
 	}
-	public void setHorario_c(int horario_c) {
+	public void setHorario_c(String horario_c) {
 		this.horario_c = horario_c;
 	}
 	public String getDestino() {
@@ -41,11 +42,11 @@ public class Onibus {
 	public void setDestino(String destino) {
 		this.destino = destino;
 	}
-	public String getTipo_onibus() {
-		return tipo_onibus;
+	public int getPrefixo() {
+		return prefixo;
 	}
-	public void setTipo_onibus(String tipo_onibus) {
-		this.tipo_onibus = tipo_onibus;
+	public void setPrefixo(int prefixo) {
+		this.prefixo = prefixo;
 	}
 	
 	

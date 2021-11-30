@@ -19,11 +19,11 @@ public class OnibusDAO {
 		PreparedStatement stmt = null;
 		
 		try {
-			stmt = con.prepareStatement("INSERT INTO filme(idOnibus, horario_s, origem, horario_c, destino) VALUES(?,?,?,?,?)");
-			stmt.setInt(1, o.getIdOnibus());
-			stmt.setInt(2, o.getHorario_s());
+			stmt = con.prepareStatement("INSERT INTO onibus(prefixo, horario_s, origem, horario_c, destino) VALUES(?,?,?,?,?)");
+			stmt.setInt(1, o.getPrefixo());
+			stmt.setString(2, o.getHorario_s());
 			stmt.setString(3, o.getOrigem());
-			stmt.setInt(4, o.getHorario_c());
+			stmt.setString(4, o.getHorario_c());
 			stmt.setString(5, o.getDestino());
 			
 		
@@ -49,10 +49,12 @@ public class OnibusDAO {
 			while(rs.next()) {
 				Onibus o = new Onibus();
 				o.setIdOnibus(rs.getInt("idOnibus"));
-				o.setHorario_s(rs.getInt("horario_s"));
+				o.setHorario_s(rs.getString("horario_s"));
 				o.setOrigem(rs.getString("origem"));
-				o.setHorario_c(rs.getInt("horario_c"));
+				o.setHorario_c(rs.getString("horario_c"));
 				o.setDestino(rs.getString("destino"));
+				o.setPrefixo(rs.getInt("prefixo"));
+				
 				Onibus.add(o);
 				
 				

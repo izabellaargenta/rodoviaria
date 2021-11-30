@@ -39,7 +39,7 @@ public class JFLogin extends JFrame {
 	 * Create the frame.
 	 */
 	public JFLogin() {
-		setTitle("SisRodovi\u00E1ria - Tela de Login");
+		setTitle("SisRodoviária - Tela de Login");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -47,7 +47,7 @@ public class JFLogin extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("SisRodovi\u00E1ria - Bem Vindo!");
+		JLabel lblNewLabel = new JLabel("SisRodoviária - Bem Vindo!");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
 		lblNewLabel.setBounds(10, 11, 414, 17);
 		contentPane.add(lblNewLabel);
@@ -57,7 +57,7 @@ public class JFLogin extends JFrame {
 		lblNewLabel_1.setBounds(10, 65, 414, 17);
 		contentPane.add(lblNewLabel_1);
 		
-		JLabel lblNewLabel_2 = new JLabel("Usu\u00E1rio:");
+		JLabel lblNewLabel_2 = new JLabel("Usuário:");
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblNewLabel_2.setBounds(10, 105, 57, 19);
 		contentPane.add(lblNewLabel_2);

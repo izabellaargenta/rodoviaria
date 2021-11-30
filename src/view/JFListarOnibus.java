@@ -42,7 +42,7 @@ public class JFListarOnibus extends JFrame {
 	 * Create the frame.
 	 */
 	public JFListarOnibus() {
-		setTitle("Listar \u00D4nibus");
+		setTitle("Lista \u00D4nibus");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 701, 398);
 		contentPane = new JPanel();
@@ -50,7 +50,7 @@ public class JFListarOnibus extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Listar \u00D5nibus");
+		JLabel lblNewLabel = new JLabel("Listagem dos Ônibus");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblNewLabel.setBounds(10, 11, 389, 32);
 		contentPane.add(lblNewLabel);
@@ -62,24 +62,24 @@ public class JFListarOnibus extends JFrame {
 		JTOnibus = new JTable();
 		JTOnibus.setModel(new DefaultTableModel(
 			new Object[][] {
-				{null, null, null, null, null},
-				{null, null, null, null, null},
+				{null, null, null, null, null, null},
+				{null, null, null, null, null, null},
 			},
 			new String[] {
-				"idOnibus", "Hor\u00E1rio Sa\u00EDda", "Origem", "Hor\u00E1rio Chegada", "Destino"
+				"idOnibus","Prefixo", "Horário Saída", "Origem", "Horário Chegada", "Destino"
 			}
 		));
 		scrollPane.setViewportView(JTOnibus);
 		
-		JButton btnNewButton = new JButton("Cadastrar Filme");
+		JButton btnNewButton = new JButton("Cadastrar Ônibus");
 		btnNewButton.setBounds(20, 316, 167, 32);
 		contentPane.add(btnNewButton);
 		
-		JButton btnNewButton_1 = new JButton("Alterar \u00D4nibus");
+		JButton btnNewButton_1 = new JButton("Alterar Ônibus");
 		btnNewButton_1.setBounds(256, 318, 152, 28);
 		contentPane.add(btnNewButton_1);
 		
-		JButton btnNewButton_2 = new JButton("Excluir \u00D4nibus");
+		JButton btnNewButton_2 = new JButton("Excluir Ônibus");
 		btnNewButton_2.setBounds(481, 316, 167, 28);
 		contentPane.add(btnNewButton_2);
 		
@@ -92,6 +92,7 @@ public class JFListarOnibus extends JFrame {
 		for(Onibus o : odao.read()) {
 			modelo.addRow(new Object[]{
 				o.getIdOnibus(),
+				o.getPrefixo(),
 				o.getHorario_s(),
 				o.getOrigem(),
 				o.getHorario_c(),
