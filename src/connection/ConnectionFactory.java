@@ -18,7 +18,7 @@ public class ConnectionFactory {
 			Class.forName(DRIVER);
 			return DriverManager.getConnection(URL, USER, PASS);
 		}catch (ClassNotFoundException | SQLException e) {
-			throw new RuntimeException("Erro na conexão: ",e);
+			throw new RuntimeException("Erro na conexão: ", e);
 		}
 	}
 	

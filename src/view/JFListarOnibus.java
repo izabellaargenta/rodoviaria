@@ -7,6 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -16,6 +18,8 @@ import model.bean.Onibus;
 import model.dao.OnibusDAO;
 
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class JFListarOnibus extends JFrame {
 
@@ -50,6 +54,7 @@ public class JFListarOnibus extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		
 		JLabel lblNewLabel = new JLabel("Listagem dos Ônibus");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblNewLabel.setBounds(10, 11, 389, 32);
@@ -79,9 +84,26 @@ public class JFListarOnibus extends JFrame {
 		btnNewButton_1.setBounds(256, 318, 152, 28);
 		contentPane.add(btnNewButton_1);
 		
-		JButton btnNewButton_2 = new JButton("Excluir Ônibus");
-		btnNewButton_2.setBounds(481, 316, 167, 28);
-		contentPane.add(btnNewButton_2);
+		JButton btnExcluirOnibus = new JButton("Excluir Ônibus");
+		btnExcluirOnibus.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(JTOnibus.getSelectedRow()!= -1) {
+					int opcao = JOptionPane.showConfirmDialog(null, "Deseja excluir o ônibus selecionado?","Exclusão" , JOptionPane.YES_NO_OPTION);
+					if(opcao == 0) {
+					OnibusDAO dao = new OnibusDAO();
+					Onibus o = new Onibus();
+					o.setIdOnibus((int)JTOnibus.getValueAt(JTOnibus.getSelectedRow(),0));
+					dao.delete(o);
+				  }
+			}else {
+				JOptionPane.showMessageDialog(null, "Selecione um onibus!");
+				
+			   }
+				readJTable();
+			}
+		});
+		btnExcluirOnibus.setBounds(481, 316, 167, 28);
+		contentPane.add(btnExcluirOnibus);
 		
 		readJTable();
 	}

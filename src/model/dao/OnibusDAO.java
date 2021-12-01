@@ -60,11 +60,28 @@ public class OnibusDAO {
 				
 			}
 		} catch (SQLException e) {
-			JOptionPane.showMessageDialog(null, "Erro ao exibir as informações do BD" + e);
+			JOptionPane.showMessageDialog(null, "Erro ao exibir as informações do BD "+ e);
 			e.printStackTrace();
 		}finally {
 			ConnectionFactory.closeConnection(con, stmt,rs);
 		}
 		return Onibus;
+	}
+	
+	public void delete(Onibus o) {
+		Connection con = ConnectionFactory.getConnection();
+		PreparedStatement stmt = null;
+		
+		try {
+			stmt = con.prepareStatement("DELETE FROM onibus WHERE idOnibus=?");
+			stmt.setInt(1, o.getIdOnibus());
+			stmt.executeUpdate();
+			
+			JOptionPane.showMessageDialog(null, "Onibus excluído com sucesso!");
+		}catch(SQLException e) {
+			JOptionPane.showMessageDialog(null, "Erro ao excluir: "+ e);
+		}finally {
+			ConnectionFactory.closeConnection(con, stmt);
+		}
 	}
 }
