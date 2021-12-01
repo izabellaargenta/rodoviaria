@@ -20,6 +20,8 @@ import model.dao.OnibusDAO;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class JFListarOnibus extends JFrame {
 
@@ -46,6 +48,12 @@ public class JFListarOnibus extends JFrame {
 	 * Create the frame.
 	 */
 	public JFListarOnibus() {
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowActivated(WindowEvent e) {
+				readJTable();
+			}
+		});
 		setTitle("Lista \u00D4nibus");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 701, 398);
@@ -80,9 +88,22 @@ public class JFListarOnibus extends JFrame {
 		btnNewButton.setBounds(20, 316, 167, 32);
 		contentPane.add(btnNewButton);
 		
-		JButton btnNewButton_1 = new JButton("Alterar Ônibus");
-		btnNewButton_1.setBounds(256, 318, 152, 28);
-		contentPane.add(btnNewButton_1);
+		JButton btnAlterarOnibus = new JButton("Alterar Ônibus");
+		btnAlterarOnibus.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//verificar linha selecionada
+				if(JTOnibus.getSelectedRow()!= -1) {
+					JFAtualizarOnibus ao = new JFAtualizarOnibus((int)JTOnibus.getValueAt(JTOnibus.getSelectedRow(),0));
+					ao.setVisible(true);
+					
+				}else {
+					JOptionPane.showMessageDialog(null, "Selecione um onibus");
+				}
+				readJTable();
+			}
+		});
+		btnAlterarOnibus.setBounds(256, 318, 152, 28);
+		contentPane.add(btnAlterarOnibus);
 		
 		JButton btnExcluirOnibus = new JButton("Excluir Ônibus");
 		btnExcluirOnibus.addActionListener(new ActionListener() {

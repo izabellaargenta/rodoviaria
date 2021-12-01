@@ -84,4 +84,54 @@ public class OnibusDAO {
 			ConnectionFactory.closeConnection(con, stmt);
 		}
 	}
+	public Onibus read (int id) {
+		Connection con = ConnectionFactory.getConnection();
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		Onibus o = new Onibus();
+		
+		try {
+			stmt = con.prepareStatement("SELECT * FROM onibus WHERE idOnibus=? LIMIT 1;");
+			stmt.setInt(1, id);
+			rs =  stmt.executeQuery();
+			if(rs != null && rs.next()) {
+				o.setIdOnibus(rs.getInt("idOnibus"));
+				o.setOrigem(rs.getString("origem"));
+				o.setDestino(rs.getString("destino"));
+				o.setHorario_c(rs.getString("horario_c"));
+				o.setHorario_s(rs.getString("horario_s"));
+				o.setPrefixo(rs.getInt("prefixo"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			ConnectionFactory.closeConnection(con, stmt, rs);
+		}
+		return o;
+	}
+	
+	public void update(Onibus o) {
+		Connection con = ConnectionFactory.getConnection();
+		PreparedStatement stmt = null;
+		
+		try {
+			stmt = con.prepareStatement("UPDATE onibus SET prefixo=?, horario_s=?, origem=?, horario_c=?, destino=? WHERE idOnibus=?;");
+			stmt.setInt(1, o.getPrefixo());
+			stmt.setString(2, o.getHorario_s());
+			stmt.setString(3, o.getOrigem());
+			stmt.setString(4, o.getHorario_c());
+			stmt.setString(5, o.getDestino());
+			stmt.setInt(6, o.getIdOnibus());
+		
+			
+			stmt.executeUpdate();
+			JOptionPane.showMessageDialog(null, "Atualizado com sucesso!");	
+		}catch(SQLException e) {
+			JOptionPane.showMessageDialog(null, "Erro ao atualizar" + e);
+		}finally {
+			ConnectionFactory.closeConnection(con, stmt);
+		}
+	}
+	
 }
