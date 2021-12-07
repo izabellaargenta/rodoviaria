@@ -26,8 +26,6 @@ public class JFAtualizarOnibus extends JFrame {
 	private JTextField txtS;
 	private JTextField txtC;
 	private static int id;
-	private JLabel lblIde;
-
 	/**
 	 * Launch the application.
 	 */
@@ -59,11 +57,11 @@ public class JFAtualizarOnibus extends JFrame {
 		OnibusDAO odao = new OnibusDAO();
 		Onibus o = odao.read(id);
 		
-		JLabel lblID = new JLabel("ID:");
-		lblID.setBounds(312, 11, 46, 14);
-		contentPane.add(lblID);
+		JLabel lblIDE = new JLabel("ID:");
+		lblIDE.setBounds(312, 11, 46, 14);
+		contentPane.add(lblIDE);
 		
-		JLabel lblIde;
+		final JLabel lblIde;
 		lblIde = new JLabel("New label");
 		lblIde.setBounds(357, 11, 46, 14);
 		contentPane.add(lblIde);
@@ -112,8 +110,17 @@ public class JFAtualizarOnibus extends JFrame {
 		lblHorarioChegada.setBounds(201, 118, 119, 21);
 		contentPane.add(lblHorarioChegada);
 		
+		txtS = new JTextField();
+		txtS.setBounds(102, 119, 86, 20);
+		contentPane.add(txtS);
+		txtS.setColumns(10);
+		
+		txtC = new JTextField();
+		txtC.setBounds(318, 119, 86, 20);
+		contentPane.add(txtC);
+		txtC.setColumns(10);
 	
-	lblId.setText(String.valueOf(o.getIdOnibus()));
+		lblIde.setText(String.valueOf(o.getIdOnibus()));
 	txtOrigem.setText(o.getOrigem());
 	txtDestino.setText(o.getDestino());
 	txtC.setText(o.getHorario_c());
@@ -128,7 +135,7 @@ public class JFAtualizarOnibus extends JFrame {
 				
 				Onibus o = new Onibus();
 				OnibusDAO dao = new OnibusDAO();
-				o.setIdOnibus(Integer.parseInt(lblID.getText()));
+				o.setIdOnibus(Integer.parseInt(lblIde.getText()));
 				o.setPrefixo(Integer.parseInt(txtPrefixo.getText()));
 				o.setOrigem(txtOrigem.getText());
 				o.setDestino(txtDestino.getText());
@@ -144,25 +151,31 @@ public class JFAtualizarOnibus extends JFrame {
 		contentPane.add(btnAlterar);
 		
 		JButton btnLimpar = new JButton("Limpar");
+		btnLimpar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				txtPrefixo.setText(null);
+				txtOrigem.setText(null);
+				txtDestino.setText(null);
+				txtC.setText(null);
+				txtS.setText(null);
+			}
+		});
 		btnLimpar.setFont(new Font("Trebuchet MS", Font.BOLD, 13));
 		btnLimpar.setBounds(171, 217, 108, 22);
 		contentPane.add(btnLimpar);
 		
 		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
 		btnCancelar.setFont(new Font("Trebuchet MS", Font.BOLD, 13));
 		btnCancelar.setBounds(307, 217, 117, 23);
 		contentPane.add(btnCancelar);
 		
-		txtS = new JTextField();
-		txtS.setBounds(102, 119, 86, 20);
-		contentPane.add(txtS);
-		txtS.setColumns(10);
-		
-		txtC = new JTextField();
-		txtC.setBounds(318, 119, 86, 20);
-		contentPane.add(txtC);
-		txtC.setColumns(10);
+	
 	}
-}
+
 	}
-}
+

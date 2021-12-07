@@ -48,7 +48,7 @@ public class JFCadastrarOnibus extends JFrame {
 	 * Create the frame.
 	 */
 	public JFCadastrarOnibus() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -124,11 +124,25 @@ public class JFCadastrarOnibus extends JFrame {
 		contentPane.add(btnCadastrar);
 		
 		JButton btnLimpar = new JButton("Limpar");
+		btnLimpar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				txtPrefixo.setText(null);
+				txtOrigem.setText(null);
+				txtDestino.setText(null);
+				txtC.setText(null);
+				txtS.setText(null);
+			}
+		});
 		btnLimpar.setFont(new Font("Trebuchet MS", Font.BOLD, 13));
 		btnLimpar.setBounds(171, 217, 108, 22);
 		contentPane.add(btnLimpar);
 		
 		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
 		btnCancelar.setFont(new Font("Trebuchet MS", Font.BOLD, 13));
 		btnCancelar.setBounds(307, 217, 117, 23);
 		contentPane.add(btnCancelar);

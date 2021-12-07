@@ -85,6 +85,12 @@ public class JFListarOnibus extends JFrame {
 		scrollPane.setViewportView(JTOnibus);
 		
 		JButton btnNewButton = new JButton("Cadastrar Ônibus");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JFCadastrarOnibus co = new JFCadastrarOnibus();
+				co.setVisible(true);
+			}
+		});
 		btnNewButton.setBounds(20, 316, 167, 32);
 		contentPane.add(btnNewButton);
 		
